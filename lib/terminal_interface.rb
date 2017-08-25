@@ -1,32 +1,44 @@
 class TerminalInterface
 
+  def initialize(board)
+    @board = board
+  end
+
   def setup_game
     system 'clear'
+
     puts "Welcome to a friendly game of Connect Four!!!"
     5.times { puts }
 
-    #  |_|_|
-    #  |_|_|
-    #  |X|O|
+    display
+  end
 
-    board_rows = 6
-    board_columns = 7
+  def get_move(player_num)
+    loop do
+      puts "Player #{player_num}, in which column do you choose to place your piece?"
+      move = gets.chomp.to_i
+      move > 0 ? (return move) : (puts "Not a valid column, try again")
+    end
+  end
 
-    board_rows.times do
-      board_columns.times do
+  def display
+    system 'clear'
+
+    board.rows.times do
+      board.columns.times do
         print '|_'
       end
 
       puts '|'
     end
 
-    board_columns.times { |t| print " #{t+1}" }
+    board.columns.times { |t| print " #{t+1}" }
 
     2.times { puts }
   end
 
-  def get_move(player_num)
-    puts "Player #{player_num}, in which column do you choose to place your piece?"
-    gets.chomp
-  end
+
+  private
+
+  attr_reader :board
 end
