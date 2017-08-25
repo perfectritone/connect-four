@@ -23,8 +23,10 @@ class TerminalInterface
     board_columns.times { |t| print " #{t+1}" }
 
     2.times { puts }
+  end
 
-    puts "Player 1, in which column do you choose to place your piece?"
-    move = gets.chomp
+  def get_move(player_num)
+    puts "Player #{player_num}, in which column do you choose to place your piece?"
+    gets.chomp
   end
 end

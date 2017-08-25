@@ -8,6 +8,7 @@ class ConnectFour
 
   def play
     interface.setup_game
+    move = interface.get_move(1)
   end
 
   private
