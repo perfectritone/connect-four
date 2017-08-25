@@ -48,7 +48,8 @@ describe Board do
     end
 
     it 'should return :ok on success' do
-      described_instance.update(1, 0)
+      expect(described_instance.update(1, 0)).to eq :ok
+    end
 
       expect(described_instance.update(1, 0)).to eq :success
     end

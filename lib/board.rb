@@ -20,7 +20,7 @@ class Board
 
     board[row][column] = player
 
-    :success
+    :ok
   end
 
   private
