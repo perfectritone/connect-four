@@ -34,5 +34,13 @@ class Board
   attr_writer :board
 
   def win?(player)
+    board.reverse_each do |row|
+      connect_four = row.chunk { |i| i == player }.
+        find { |chunk| chunk[0] && chunk[1].length == 4 }
+
+      return true if connect_four
+    end
+
+    false
   end
 end
