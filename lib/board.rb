@@ -22,7 +22,7 @@ class Board
 
     board[row][column] = player
 
-    :ok
+    win?(player) ? :win : :ok
   end
 
   private
@@ -32,7 +32,7 @@ class Board
   end
 
   attr_writer :board
-end
 
-# player pieces
-# display board, move
+  def win?(player)
+  end
+end

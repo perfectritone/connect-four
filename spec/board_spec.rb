@@ -59,5 +59,15 @@ describe Board do
       expect(described_instance.update(1, -1)).to eq :invalid
     end
   end
+
+  describe '#win?' do
+    it 'should return false when 4 pieces are connected, but owned by different players' do
+      p1 = 1
+      p2 = 2
+
+      3.times { |n| described_instance.update(p1, n) }
+      expect(described_instance.update(p2, 3)).to eq :ok
+    end
+  end
 end
 
