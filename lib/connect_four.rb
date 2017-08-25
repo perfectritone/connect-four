@@ -12,9 +12,14 @@ class ConnectFour
     interface.setup_game
 
     player = 1
-    move = interface.get_move(player)
-    board.update(player, move)
-    interface.display
+
+    loop do
+      move = interface.get_move(player)
+      status = board.update(player, move)
+      interface.display
+
+      player = player == 1 ? 2 : 1
+    end
   end
 
   private
