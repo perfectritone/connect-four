@@ -36,21 +36,21 @@ class Board
   def win?(player)
     # row
     board.reverse_each do |row|
-      connect_four = row.chunk { |i| i == player }.
-        find { |chunk| chunk[0] && chunk[1].length == 4 }
-
-      return true if connect_four
+      return true if four_in_a_row?(row, player)
     end
 
     # column
     columns.times do |n|
       column = board.map { |row| row[n] }
-      connect_four = column.chunk { |i| i == player }.
-        find { |chunk| chunk[0] && chunk[1].length == 4 }
 
-      return true if connect_four
+      return true if four_in_a_row?(column, player)
     end
 
     false
+  end
+
+  def four_in_a_row?(arr, elem)
+    arr.chunk { |i| i == elem }.
+      find { |chunk| chunk[0] && chunk[1].length == 4 }
   end
 end
