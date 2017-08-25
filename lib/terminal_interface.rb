@@ -19,5 +19,12 @@ class TerminalInterface
 
       puts '|'
     end
+
+    board_columns.times { |t| print " #{t+1}" }
+
+    2.times { puts }
+
+    puts "Player 1, in which column do you choose to place your piece?"
+    move = gets.chomp
   end
 end
