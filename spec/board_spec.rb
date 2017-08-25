@@ -35,10 +35,22 @@ describe Board do
       expect(non_nil_spaces).to eq 1
     end
 
+    it 'should allow for a second player' do
+      described_instance.update(2, 0)
+
+      expect(described_instance.board[-1][0]).to eq 2
+    end
+
     it 'should return :invalid when row is full' do
       7.times { described_instance.update(1, 0) }
 
       expect(described_instance.update(1, 0)).to eq :invalid
+    end
+
+    it 'should return :ok on success' do
+      described_instance.update(1, 0)
+
+      expect(described_instance.update(1, 0)).to eq :success
     end
   end
 end

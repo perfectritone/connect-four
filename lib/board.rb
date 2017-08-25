@@ -19,6 +19,8 @@ class Board
     end
 
     board[row][column] = player
+
+    :success
   end
 
   private
