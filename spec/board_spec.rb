@@ -67,10 +67,16 @@ describe Board do
       expect(described_instance.update(2, 3)).to eq :ok
     end
 
-    it 'should return true when a player has 4 pieces connected' do
+    it 'should return true when a player has 4 pieces connected in a row' do
       3.times { |n| described_instance.update(1, n) }
 
       expect(described_instance.update(1, 3)).to eq :win
+    end
+
+    it 'should return true when a player has 4 pieces connected in a column' do
+      3.times { described_instance.update(1, 0) }
+
+      expect(described_instance.update(1, 0)).to eq :win
     end
   end
 end
