@@ -51,8 +51,12 @@ describe Board do
       expect(described_instance.update(1, 0)).to eq :ok
     end
 
-    it 'should not allow a space to be updated out of bounds; column' do
+    it 'should not allow a space to be updated out of bounds; column max' do
       expect(described_instance.update(1, 7)).to eq :invalid
+    end
+
+    it 'should not allow a space to be updated out of bounds; column min' do
+      expect(described_instance.update(1, -1)).to eq :invalid
     end
   end
 end

@@ -11,7 +11,7 @@ class Board
   attr_reader :board
 
   def update(player, column)
-    return :invalid if column >= columns
+    return :invalid if column >= columns || column < 0
 
     reversed_row_index = board.reverse.find_index { |row| row[column].nil? }
     if reversed_row_index
