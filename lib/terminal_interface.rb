@@ -17,16 +17,19 @@ class TerminalInterface
     loop do
       puts "Player #{player_num}, in which column do you choose to place your piece?"
       move = gets.chomp.to_i
-      move > 0 ? (return move) : (puts "Not a valid column, try again")
+
+      # index on display starts a 1. move-1 shifts to 0.
+      move > 0 ? (return move-1) : (puts "Not a valid column, try again")
     end
   end
 
   def display
     system 'clear'
 
-    board.rows.times do
-      board.columns.times do
-        print '|_'
+    board.board.each do |r|
+      r.each do |c|
+        piece = c || '_' # nil => an empty space
+        print "|#{piece}"
       end
 
       puts '|'

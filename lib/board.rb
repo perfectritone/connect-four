@@ -17,7 +17,7 @@ class Board
   private
 
   def new_board
-    Array.new(self.class.rows, Array.new(self.class.columns))
+    Array.new(self.class.rows) { Array.new(self.class.columns) }
   end
 
   attr_writer :board
