@@ -43,7 +43,11 @@ class TerminalInterface
   end
 
   def win(player_num)
-    puts "CONGRATULATIONS PLAYER #{player_num}!!!!!!!\n\nYOU'VE WON!!!!!!!!\n"
+    puts "CONGRATULATIONS PLAYER #{player_num}!!!!!!!\n\nYOU'VE WON!!!!!!!!\n\n"
+  end
+
+  def tie
+    puts "Hmmmmmmmm, looks like a tie.\n\n"
   end
 
   def play_again?

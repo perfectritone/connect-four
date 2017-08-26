@@ -20,7 +20,11 @@ class ConnectFour
 
       if status == :win
         interface.win(player)
+      elsif status == :tie
+        interface.tie
+      end
 
+      if [:win, :tie].include? status
         return interface.play_again? ? :again : :finish
       end
 
