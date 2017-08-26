@@ -52,22 +52,16 @@ class Board
 
       possible_beginning_columns = 0..columns-4
       possible_beginning_columns.each do |c|
-        diag = []
-        4.times { |o| diag << board[-1 - (r+o)][c+o]}
+        down_to_the_right_diag = []
+        up_to_the_right_diag = []
 
-        return true if four_in_a_row?(diag, player)
-      end
-    end
+        4.times { |o| down_to_the_right_diag << board[r+o][c+o]}
+        4.times { |o| up_to_the_right_diag << board[-1 - (r+o)][c+o]}
 
-    possible_beginning_rows = 0..rows-4
-    possible_beginning_rows.each do |r|
+        diagonal_win = [down_to_the_right_diag, up_to_the_right_diag].
+          find { |d| four_in_a_row?(d, player) }
 
-      possible_beginning_columns = 0..columns-4
-      possible_beginning_columns.each do |c|
-        diag = []
-        4.times { |o| diag << board[(r+o)][c+o]}
-
-        return true if four_in_a_row?(diag, player)
+        return true if diagonal_win
       end
     end
 
