@@ -21,11 +21,16 @@ class ConnectFour
       if status == :win
         interface.win(player)
 
-        break
+        return interface.play_again? ? :again : :finish
       end
 
       player = player == 1 ? 2 : 1
     end
+  end
+
+  def reset_game
+    @board = Board.new
+    interface.update_board_instance(board)
   end
 
   private
@@ -33,4 +38,11 @@ class ConnectFour
   attr_reader :interface, :board
 end
 
-ConnectFour.new.play
+game = ConnectFour.new
+
+loop do
+  game_status = game.play
+
+  break if game_status != :again
+  game.reset_game
+end

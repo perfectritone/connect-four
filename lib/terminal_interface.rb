@@ -1,3 +1,4 @@
+require 'io/console'
 class TerminalInterface
 
   def initialize(board)
@@ -42,7 +43,21 @@ class TerminalInterface
   end
 
   def win(player_num)
-    puts "CONGRATULATIONS PLAYER #{player_num}!!!!!!!\n\nYOU'VE WON!!!!!!!!"
+    puts "CONGRATULATIONS PLAYER #{player_num}!!!!!!!\n\nYOU'VE WON!!!!!!!!\n"
+  end
+
+  def play_again?
+    loop do
+      puts "Would you like to play again? (y/n)"
+      answer = STDIN.getch
+
+      return true if answer == 'y'
+      return false if answer == 'n'
+    end
+  end
+
+  def update_board_instance(board)
+    @board = board
   end
 
   private
