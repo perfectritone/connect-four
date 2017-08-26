@@ -22,7 +22,13 @@ class Board
 
     board[row][column] = player
 
-    win?(player) ? :win : :ok
+    status = if win?(player)
+               :win
+             elsif tie?(player)
+               :tie
+             else
+               :ok
+             end
   end
 
   private
@@ -80,5 +86,9 @@ class Board
   def four_in_a_row?(arr, elem)
     arr.chunk { |i| i == elem }.
       find { |chunk| chunk[0] && chunk[1].length == 4 }
+  end
+
+  def tie?(player)
+    !board.any? { |r| r.any? { |piece| piece.nil? } }
   end
 end

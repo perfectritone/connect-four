@@ -112,5 +112,21 @@ describe Board do
       expect(described_instance.update(1, 1)).to eq :win
     end
   end
+
+  describe '#tie?' do
+    it 'should return tie when the board is full' do
+      cs = described_instance.columns
+
+      cs.times do |c|
+        (described_instance.rows-1).times do
+          described_instance.update(0, c)
+        end
+      end
+
+      (cs-1).times { |c| described_instance.update(0, c) }
+
+      expect(described_instance.update(1, cs-1)).to eq :tie
+    end
+  end
 end
 
