@@ -59,6 +59,18 @@ class Board
       end
     end
 
+    possible_beginning_rows = 0..rows-4
+    possible_beginning_rows.each do |r|
+
+      possible_beginning_columns = 0..columns-4
+      possible_beginning_columns.each do |c|
+        diag = []
+        4.times { |o| diag << board[(r+o)][c+o]}
+
+        return true if four_in_a_row?(diag, player)
+      end
+    end
+
     false
   end
 
