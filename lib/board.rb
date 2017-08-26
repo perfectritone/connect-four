@@ -47,10 +47,10 @@ class Board
     end
 
     # diagonal
-    beginning_column_up_right = 0..columns-3
-    beginning_column_up_right.each do |n|
+    possible_beginning_columns = 0..columns-3
+    possible_beginning_columns.each do |n|
       diag = []
-      4.times { |o| diag << board[-1 - (n+o)][n+o] }
+      4.times { |o| diag << board[-1 - (o)][n+o] }
 
       return true if four_in_a_row?(diag, player)
     end
