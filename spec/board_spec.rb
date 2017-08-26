@@ -86,11 +86,20 @@ describe Board do
       expect(described_instance.update(1, 3)).to eq :win
     end
 
-    it 'should return true when a player has 4 pieces connected diagonally 2' do
+    it 'should return true when a player has 4 pieces connected diagonally \
+        starting at 0,1 at going to the right' do
       3.times { |n| (n+1).times { described_instance.update(1, n+1) } }
       3.times { described_instance.update(2, 4) }
 
-      puts described_instance.board.inspect
+      expect(described_instance.update(1, 4)).to eq :win
+    end
+
+    it 'should return true when a player has 4 pieces connected diagonally \
+        starting at 1,0 and going to the right' do
+      4.times { |n| described_instance.update('x', n+1) }
+      3.times { |n| (n+1).times { described_instance.update('x', n+2) } }
+      3.times { |n| described_instance.update(1, n+1) }
+
       expect(described_instance.update(1, 4)).to eq :win
     end
   end
