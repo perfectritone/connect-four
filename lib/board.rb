@@ -41,6 +41,8 @@ class Board
     board.reverse_each do |row|
       return true if four_in_a_row?(row, player)
     end
+
+    false
   end
 
   def column_win?(player)
@@ -49,6 +51,8 @@ class Board
 
       return true if four_in_a_row?(column, player)
     end
+
+    false
   end
 
   def diagonal_win?(player)
@@ -69,6 +73,8 @@ class Board
         return true if diagonal_win
       end
     end
+
+    false
   end
 
   def four_in_a_row?(arr, elem)
