@@ -34,19 +34,24 @@ class Board
   attr_writer :board
 
   def win?(player)
-    # row
+    row_win?(player) || column_win?(player) || diagonal_win?(player)
+  end
+
+  def row_win?(player)
     board.reverse_each do |row|
       return true if four_in_a_row?(row, player)
     end
+  end
 
-    # column
+  def column_win?(player)
     columns.times do |n|
       column = board.map { |row| row[n] }
 
       return true if four_in_a_row?(column, player)
     end
+  end
 
-    # diagonal
+  def diagonal_win?(player)
     possible_beginning_rows = 0..rows-4
     possible_beginning_rows.each do |r|
 
@@ -64,8 +69,6 @@ class Board
         return true if diagonal_win
       end
     end
-
-    false
   end
 
   def four_in_a_row?(arr, elem)
