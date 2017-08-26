@@ -35,11 +35,15 @@ class TerminalInterface
       puts '|'
     end
 
+    puts "#{'_' * board.columns * 2}_"
     board.columns.times { |t| print " #{t+1}" }
 
     2.times { puts }
   end
 
+  def win(player_num)
+    puts "CONGRATULATIONS PLAYER #{player_num}!!!!!!!\n\nYOU'VE WON!!!!!!!!"
+  end
 
   private
 

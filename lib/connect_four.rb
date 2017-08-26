@@ -18,6 +18,12 @@ class ConnectFour
       status = board.update(player, move)
       interface.display
 
+      if status == :win
+        interface.win(player)
+
+        break
+      end
+
       player = player == 1 ? 2 : 1
     end
   end
